@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        any {
             image 'ubuntu:20.04'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
