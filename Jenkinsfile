@@ -1,6 +1,10 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'ubuntu:20.04'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
         stage('Build') {
             steps {
