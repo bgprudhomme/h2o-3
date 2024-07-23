@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('Install Make') {
+            steps {
+                sh 'apt-get update && apt-get install -y make'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'make -f scripts/Makefile.jenkins build'
@@ -20,12 +25,6 @@ pipeline {
             steps {
                 sh 'make -f scripts/Makefile.jenkins deploy'
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
