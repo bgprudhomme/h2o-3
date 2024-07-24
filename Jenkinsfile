@@ -6,6 +6,19 @@ pipeline {
         }
     }
     stages {
+        stage('Install Docker') {
+            steps {
+                sh '''
+                apt-get update
+                apt-get install -y docker.io
+                '''
+            }
+        }
+        stage('Verify Docker') {
+            steps {
+                sh 'docker --version'
+            }
+        }
         stage('Install Make') {
             steps {
                 sh 'apt-get update && apt-get install -y make'
